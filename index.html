@@ -9,8 +9,8 @@
 	<link rel="stylesheet" type="text/css" href="css/style.css">
 
 	<!-- Latest compiled and minified JavaScript -->
-	<!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script> -->
 	<script type="text/javascript" src="js/jquery-3.2.1.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 	<script type="text/javascript" src="js/angular.min.js"></script>
 	<script type="text/javascript" src="js/angular-route.js"></script>
 	<script type="text/javascript" src="js/app.js"></script>
@@ -64,7 +64,7 @@
 								<strong>Diet:</strong>
 								{{turtle.diet}}
 							</p>
-							<button class="btn btn-primary pull-right" data-toggle="modal"  data-target="#turtle-info" ng-click="ha($index)">
+							<button class="btn btn-primary pull-right" data-toggle="modal"  data-target="#turtle-info" ng-click="changeActiveTurtle(turtle)">
 								Learn More
 							</button>
 						</div>
@@ -72,6 +72,52 @@
 				</div>
 			</div>		
 		</div>
+
+
+		<div class="modal" id="turtle-info">
+			<div class="modal-dialog">
+				<div class="model-content">
+					<div class="modal-header">
+						<h2>{{activeTurtle.type}}</h2>
+					</div>
+					<div class="modal-body">
+          				<div class="row">
+          					<div class="col-xs-8 col-xs-offset-2">
+          						<img ng-src={{activeTurtle.image_url}} class="img-rounded img-responsive well-image">
+          					</div>		
+          				</div>
+          				<div class="row">
+          					<div class="col-md-6">
+          						<p>
+								<strong>
+									Locations:
+								</strong>
+									{{activeTurtle.locations}}
+								</p>
+								<p>
+									<strong>
+										size:
+									</strong>
+									{{activeTurtle.size}}
+								</p>
+								<p>
+									<strong>Average lifespan:</strong>
+									{{activeTurtle.lifespan}}
+								</p>
+								<p>
+									<strong>Diet:</strong>
+									{{activeTurtle.diet}}
+								</p>
+          					</div>
+          				</div>
+			        </div>
+			        <div class="modal-footer">
+			         	<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+			        </div>
+				</div>
+			</div>
+		</div>
+
 	</div>
 </div>
 </body>

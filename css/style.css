@@ -2,3 +2,6 @@
   width: 100%;
   height: 162px;
 }
+.modal-dialog {
+    background: #fff;
+}

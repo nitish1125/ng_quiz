@@ -78,7 +78,9 @@ app.controller('listCtrl', function($scope) {
 
     $scope.data=turtlesData;
 
-    $scope.ha=function(index){
-        alert(index)
+    $scope.activeTurtle={};
+
+    $scope.changeActiveTurtle=function(index){
+          $scope.activeTurtle=index;
     }
 });
