@@ -25,18 +25,17 @@
 	</div>
 
 	<div ng-controller="listCtrl">
-		<!-- <p ng-repeat="turtle in data">
-			<span>{{turtle.type}}</span>
-			<img ng-src={{turtle.image_url}}>
-			<span>{{turtle.locations}}</span>
-			<span>{{turtle.size}}</span>
-			<span>{{turtle.lifespan}}</span>
-			<span>{{turtle.diet}}</span>
-			<span>{{turtle.description}}</span>
-		</p> -->
+
+		<form class="form-inline well well-sm clearfix">
+			<span class="glyphicon glyphicon-search"></span>
+			<input type="text" class="form-control" ng-model="turtle_filter" placeholder="search...">
+			<button class="btn btn-primary btn-warning pull-right">
+				<strong>Start Quiz</strong>
+			</button>
+		</form>
 
 		<div class="row">
-			<div class="col-sm-6" ng-repeat="turtle in data">
+			<div class="col-sm-6" ng-repeat="turtle in data | filter:turtle_filter">
 				<div class="well well-sm">
 					<div class="row">
 						<div class="col-md-6">
@@ -86,7 +85,7 @@
           						<img ng-src={{activeTurtle.image_url}} class="img-rounded img-responsive well-image">
           					</div>		
           				</div>
-          				<div class="row">
+          				<div class="row top-buffer">
           					<div class="col-md-6">
           						<p>
 								<strong>
@@ -109,9 +108,15 @@
 									{{activeTurtle.diet}}
 								</p>
           					</div>
+
+          					<div class="top-buffer col-xs-12">
+          						<p>
+          							{{activeTurtle.description}}
+          						</p>
+          					</div>
           				</div>
 			        </div>
-			        <div class="modal-footer">
+			        <div class="modal-footer ">
 			         	<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
 			        </div>
 				</div>

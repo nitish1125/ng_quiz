@@ -80,6 +80,8 @@ app.controller('listCtrl', function($scope) {
 
     $scope.activeTurtle={};
 
+    $scope.turtle_filter;
+
     $scope.changeActiveTurtle=function(index){
           $scope.activeTurtle=index;
     }
