@@ -24,12 +24,12 @@
 		<h3>Learn about the turtles below</h3>
 	</div>
 
-	<div ng-controller="listCtrl">
+	<div ng-controller="listCtrl"  ng-hide='quiz_active'>
 
 		<form class="form-inline well well-sm clearfix">
 			<span class="glyphicon glyphicon-search"></span>
 			<input type="text" class="form-control" ng-model="turtle_filter" placeholder="search...">
-			<button class="btn btn-primary btn-warning pull-right">
+			<button class="btn btn-primary btn-warning pull-right" ng-click="list_display()">
 				<strong>Start Quiz</strong>
 			</button>
 		</form>

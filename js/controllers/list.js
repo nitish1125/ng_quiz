@@ -82,6 +82,12 @@ app.controller('listCtrl', function($scope) {
 
     $scope.turtle_filter;
 
+    $scope.quiz_active=false;
+
+    $scope.list_display=function(){
+        $scope.quiz_active=!$scope.quiz_active;
+    }
+
     $scope.changeActiveTurtle=function(index){
           $scope.activeTurtle=index;
     }
