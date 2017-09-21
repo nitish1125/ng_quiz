@@ -1,6 +1,6 @@
 app.service('quizMetrics',function(){
 	var quizObj={
-		quizActive:false,
+		quizActive:true,
 		changeState:function(state){
 			quizObj.quizActive=state;
 		}
