@@ -7,7 +7,8 @@ app.service('dataService',function(){
 });
 
 
-
+	var correctAnswers = [1, 2, 3, 0, 2, 0, 3, 2, 0, 3];
+	
 	var quizQuestions  = [
         {
             type: "text",

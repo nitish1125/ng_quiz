@@ -4,22 +4,24 @@ app.controller('quizCtrl', ['$scope','quizMetrics','dataService', function($scop
 
 	$scope.activeQuestion=0;
 
-	$scope.setActiveQuestion=function(){
+	$scope.setActiveQuestion=function(index){
 
-		/*if(dataService.quizQuestions[activeQuestion].selected!==null){
-			$scope.activeQuestion++;
-		}*/
+		if(index === undefined){
+			var breakout= false;
+			var quizLength=dataService.quizQuestions.length-1;
 
-		var breakout= false;
-		var quizLength=dataService.quizQuestions.length-1;
+			while(!breakout){
+				$scope.activeQuestion=$scope.activeQuestion < quizLength ? ++$scope.activeQuestion : 0;
 
-		while(!breakout){
-			$scope.activeQuestion=$scope.activeQuestion < quizLength ? ++$scope.activeQuestion : 0;
-
-			if(dataService.quizQuestions[activeQuestion].selected === null){
-				breakout=true;
+				if(dataService.quizQuestions[$scope.activeQuestion].selected === null){
+					breakout=true;
+				}
 			}
 		}
+		else{
+			$scope.activeQuestion=index;
+		}
+		
 	};
 
 	var numQuestionsAnswered=0;
@@ -34,6 +36,12 @@ app.controller('quizCtrl', ['$scope','quizMetrics','dataService', function($scop
 			}
 		}
 
-		setActiveQuestion();
+		$scope.setActiveQuestion();
 	}
+
+
+	$scope.selectAnswer=function(index){
+		dataService.quizQuestions[$scope.activeQuestion].selected=index;
+	}
+
 }])
