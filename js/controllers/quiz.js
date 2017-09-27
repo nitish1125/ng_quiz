@@ -1,8 +1,9 @@
 app.controller('quizCtrl', ['$scope','quizMetrics','dataService', function($scope, quizMetrics,dataService) {
 	$scope.quizMetrics=quizMetrics;
 	$scope.dataService=dataService;
-
 	$scope.activeQuestion=0;
+	$scope.error=false;
+	$scope.finalize=false;
 
 	$scope.setActiveQuestion=function(index){
 
@@ -12,6 +13,10 @@ app.controller('quizCtrl', ['$scope','quizMetrics','dataService', function($scop
 
 			while(!breakout){
 				$scope.activeQuestion=$scope.activeQuestion < quizLength ? ++$scope.activeQuestion : 0;
+
+				if($scope.activeQuestion === 0){
+  						$scope.error=true;
+				}	
 
 				if(dataService.quizQuestions[$scope.activeQuestion].selected === null){
 					breakout=true;
@@ -33,6 +38,16 @@ app.controller('quizCtrl', ['$scope','quizMetrics','dataService', function($scop
 			numQuestionsAnswered++; 
 			if(numQuestionsAnswered>=quizLength){
 				//finalize quiz
+
+				for(var i=0;i<quizLength; i++){
+					if(dataService.quizQuestions[i].selected===null){
+						$scope.setActiveQuestion(i);
+					}
+					return;
+				}
+				$scope.error=false;
+				$scope.finalize=true;
+				return;
 			}
 		}
 
