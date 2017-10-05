@@ -6,7 +6,6 @@ app.controller('quizCtrl', ['$scope','quizMetrics','dataService', function($scop
 	$scope.finalize=false;
 
 	$scope.setActiveQuestion=function(index){
-
 		if(index === undefined){
 			var breakout= false;
 			var quizLength=dataService.quizQuestions.length-1;
@@ -25,8 +24,7 @@ app.controller('quizCtrl', ['$scope','quizMetrics','dataService', function($scop
 		}
 		else{
 			$scope.activeQuestion=index;
-		}
-		
+		}		
 	};
 
 	var numQuestionsAnswered=0;
@@ -42,8 +40,8 @@ app.controller('quizCtrl', ['$scope','quizMetrics','dataService', function($scop
 				for(var i=0;i<quizLength; i++){
 					if(dataService.quizQuestions[i].selected===null){
 						$scope.setActiveQuestion(i);
-					}
 					return;
+					}
 				}
 				$scope.error=false;
 				$scope.finalize=true;
@@ -57,6 +55,15 @@ app.controller('quizCtrl', ['$scope','quizMetrics','dataService', function($scop
 
 	$scope.selectAnswer=function(index){
 		dataService.quizQuestions[$scope.activeQuestion].selected=index;
+	}
+
+	$scope.finalizeAnswers=function(){
+		$scope.finalize=false;
+		numQuestionsAnswered=0;
+		$scope.activeQuestion=0;
+		quizMetrics.markQuiz();
+		quizMetrics.changeState('quiz',false);
+		quizMetrics.changeState('results',true);
 	}
 
 }])

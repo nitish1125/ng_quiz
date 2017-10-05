@@ -2,6 +2,7 @@ app.service('dataService',function(){
 	var dataObj={
 		turtlesData: turtlesData,
 		quizQuestions: quizQuestions,
+		correctAnswers:correctAnswers,
 	}
     return dataObj;
 });

@@ -110,7 +110,7 @@ app.controller('listCtrl', ['$scope','quizMetrics','dataService', function($scop
     $scope.quizMetrics=quizMetrics;
     
     $scope.activate_quiz=function(){
-        quizMetrics.changeState(true);
+        quizMetrics.changeState('quiz',true);
     }
 
     $scope.changeActiveTurtle=function(index){
